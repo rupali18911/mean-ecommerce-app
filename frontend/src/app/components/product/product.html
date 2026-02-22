@@ -1,0 +1,35 @@
+<div class="container">
+
+  <h2 class="title">Product Management</h2>
+
+  <!-- Form -->
+  <div class="form-card">
+    <input [(ngModel)]="formData.name" placeholder="Product Name">
+    <input [(ngModel)]="formData.price" type="number" placeholder="Price">
+    <input [(ngModel)]="formData.description" placeholder="Description">
+    <input [(ngModel)]="formData.imageUrl" placeholder="Image URL">
+
+    <button (click)="submit()">
+      {{ editingId ? 'Update' : 'Add Product' }}
+    </button>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="grid">
+    <div class="card" *ngFor="let product of products">
+
+      <img [src]="product.imageUrl">
+
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description }}</p>
+      <span class="price">₹{{ product.price }}</span>
+
+      <div class="actions">
+        <button class="edit" (click)="edit(product)">Edit</button>
+        <button class="delete" (click)="delete(product.id!)">Delete</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
